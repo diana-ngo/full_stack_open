@@ -8,8 +8,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint .",
     "build:ui": "rm -rf dist && cd ../phonebook-fe && npm run build && cp -r dist ../phonebook-be",
     "deploy:full": "npm run build:ui && git add . && git commit -m uibuild && git push"
   },
@@ -18,5 +19,11 @@
     "express": "^5.2.1",
     "mongoose": "^9.7.0",
     "morgan": "^1.11.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "eslint": "^10.5.0",
+    "globals": "^17.6.0"
   }
 }
