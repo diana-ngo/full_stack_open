@@ -72,18 +72,26 @@ const App = () => {
       number: newNumber,
     };
 
-    personsService.create(newPerson).then((person) => {
-      setPersons([...persons, person]);
-      setNewName("");
-      setNewNumber("");
-      setNotification({
-        type: "success",
-        message: `Added ${person.name}`,
+    personsService
+      .create(newPerson)
+      .then((person) => {
+        setPersons([...persons, person]);
+        setNewName("");
+        setNewNumber("");
+        setNotification({
+          type: "success",
+          message: `Added ${person.name}`,
+        });
+        setTimeout(() => {
+          setNotification(null);
+        }, 3000);
+      })
+      .catch((error) => {
+        setNotification({ type: "error", message: error.response.data.error });
+        setTimeout(() => {
+          setNotification(null);
+        }, 3000);
       });
-      setTimeout(() => {
-        setNotification(null);
-      }, 3000);
-    });
   };
 
   const deletePerson = (id, name) => {
