@@ -1,4 +1,4 @@
-const logger = require('./utils/logger')
+const logger = require('./logger')
 
 const requestLogger = (request, response, next) => {
   logger.info('method:', request.method)
